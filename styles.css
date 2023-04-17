@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header,
+.footer {
+    display: flex;
+    justify-content: space-around;
+    place-items: center;
+    height: 60px;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+}
+
+.container {
+    width: 300px;
+    height: 300px;
+}
