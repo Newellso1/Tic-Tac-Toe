@@ -1,4 +1,5 @@
 const cells = document.querySelectorAll('.cell');
+const resetButton = document.querySelector('.resetButton');
 let playerTurn = 1;
 let playerMark = "o";
 
@@ -23,6 +24,14 @@ function changeMark() {
         playerMark = "o";
     }
 }
+
+// Function that resets the board
+
+resetButton.addEventListener('click', function() {
+    cells.forEach(function(cell) {
+        cell.innerHTML = '';
+    })
+})
 
 // Adds marker function to each click on cell
 
