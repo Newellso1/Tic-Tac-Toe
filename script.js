@@ -1,18 +1,20 @@
-const cells = document.querySelectorAll('.cell');
+const cells = document.querySelectorAll('#cells');
 const resetButton = document.querySelector('.resetButton');
 let playerTurn = 1;
 let playerMark = "o";
 
-// Function that adds 'x' to target
+// Function that adds playerMark value to target if empty
 
 function marker(event) {
-  event.target.innerHTML = playerMark;
+    if (event.target.innerHTML === "") {
+        event.target.innerHTML = playerMark;
+    }
 };
 
 // Function that increases playerTurn in order to alter playerMark
 
 function changePlayer() {
-    playerTurn ++;
+    playerTurn++;
 };
 
 // Function that will alter playerMark depending on who's go it is
@@ -27,26 +29,28 @@ function changeMark() {
 
 // Function that resets the board
 
-resetButton.addEventListener('click', function() {
-    cells.forEach(function(cell) {
+resetButton.addEventListener('click', function () {
+    cells.forEach(function (cell) {
         cell.innerHTML = '';
     })
 })
 
 // Adds marker function to each click on cell
 
-cells.forEach(function(cell) {
-  cell.addEventListener('click', marker);
+cells.forEach(function (cell) {
+    cell.addEventListener('click', marker);
+    cell.addEventListener('click', changePlayer)
+    cell.addEventListener('click', changeMark)
 });
 
 // Increase playerTurn on each click
 
-cells.forEach(function(cell) {
+cells.forEach(function (cell) {
     cell.addEventListener('click', changePlayer)
 });
 
 // Change playerMark on each click 
 
-cells.forEach(function(cell) {
+cells.forEach(function (cell) {
     cell.addEventListener('click', changeMark)
 });
