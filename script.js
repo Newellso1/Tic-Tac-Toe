@@ -8,6 +8,7 @@ let playerMark = "o";
 function marker(event) {
     if (event.target.innerHTML === "") {
         event.target.innerHTML = playerMark;
+        event.target.classList.add('marked');
     }
 };
 
@@ -32,8 +33,10 @@ function changeMark() {
 resetButton.addEventListener('click', function () {
     cells.forEach(function (cell) {
         cell.innerHTML = '';
+        cell.classList.remove('marked');
     })
 })
+
 
 // Adds marker function to each click on cell
 

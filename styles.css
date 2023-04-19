@@ -71,21 +71,32 @@ body {
     font-size: 60px;
     line-height: 10px;
     color: #264650;
+    /* transition: opacity 0.3s ease-in; */
 }
 
-.cell1, {
+.cell1 {
     border-radius: 20px 5px 5px 5px;
-    
+    transition: opacity 0.3s ease-in-out;
 }
 
 .cell2, .cell3, .cell4, .cell5, .cell6, .cell7, .cell8{
     border-radius: 5px;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .cell9 {
     border-radius: 5px 5px 20px 5px;
+    transition: opacity 0.3s ease-in-out;
 
 }
+
+/* Marked class for fading in of mark */
+
+.marked {
+    opacity: 0.8;
+}
+
+
 .resetButton {
     width: 150px;
     background: none;
