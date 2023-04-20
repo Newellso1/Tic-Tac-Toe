@@ -2,6 +2,8 @@ const cells = document.querySelectorAll('#cells');
 const resetButton = document.querySelector('.resetButton');
 let playerTurn = 1;
 let playerMark = "o";
+let oScoreCount = 0;
+let xScoreCount = 0;
 let cell1;
 let cell2;
 let cell3;
@@ -11,6 +13,14 @@ let cell6;
 let cell7;
 let cell8;
 let cell9;
+
+
+// Function that increases the score count 
+
+function scoreCount() {
+    document.querySelector('.oScore').innerHTML = oScoreCount;
+    document.querySelector('.xScore').innerHTML = xScoreCount;
+}
 
 // Function that adds playerMark value to target if empty
 
@@ -59,7 +69,10 @@ function checkWin() {
         (cell3 === 'x' && cell6 === 'x' && cell9 === 'x') ||
         (cell1 === 'x' && cell5 === 'x' && cell9 === 'x') ||
         (cell3 === 'x' && cell5 === 'x' && cell7 === 'x')) {
-        console.log('x wins')
+        console.log('x wins');
+        xScoreCount ++;
+        scoreCount();
+        resetGame();
     } else if ((cell1 === 'x' && cell2 === 'x' && cell3 === 'x') ||
         (cell4 === 'o' && cell5 === 'o' && cell6 === 'o') ||
         (cell7 === 'o' && cell8 === 'o' && cell9 === 'o') ||
@@ -68,19 +81,30 @@ function checkWin() {
         (cell3 === 'o' && cell6 === 'o' && cell9 === 'o') ||
         (cell1 === 'o' && cell5 === 'o' && cell9 === 'o') ||
         (cell3 === 'o' && cell5 === 'o' && cell7 === 'o')) {
-        console.log('o wins')
+        console.log('o wins');
+        oScoreCount ++;
+        scoreCount();
+        resetGame();
     }
 
 
 }
 // Function that resets the board
-
-resetButton.addEventListener('click', function () {
+function resetGame() {
     cells.forEach(function (cell) {
         cell.innerHTML = '';
         cell.classList.remove('marked');
-    })
-})
+    }) 
+    
+}
+
+resetButton.addEventListener('click', function() {
+    document.querySelector('.oScore').innerHTML = '0';
+    document.querySelector('.xScore').innerHTML = '0';
+    oScoreCount = 0;
+    xScoreCount = 0;
+});
+
 
 
 // Adds marker function to each click on cell
